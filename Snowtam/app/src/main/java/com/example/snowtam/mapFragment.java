@@ -23,11 +23,17 @@ import java.util.ArrayList;
 
 public class mapFragment extends Fragment {
 
+    private double latitude ;
+    private double longitude ;
     private MapView map;
      View mapFragmentView ;
 
 
 
+    public mapFragment(float latitude ,float longitude) {
+        this.latitude = latitude ;
+        this.longitude = longitude ;
+    }
 
     public mapFragment() {
         // Required empty public constructor
@@ -43,13 +49,13 @@ public class mapFragment extends Fragment {
         map =  mapFragmentView.findViewById(R.id.map);
         map.setTileSource(TileSourceFactory.MAPNIK);//render
         map.setBuiltInZoomControls(true);//zoomable
-        GeoPoint startPoint = new GeoPoint(43.65020,7.00517);
+        GeoPoint startPoint = new GeoPoint(this.latitude,this.longitude);
         IMapController mapController = map.getController();
-        mapController.setZoom(18.0);
+        mapController.setZoom(15.0);
         mapController.setCenter(startPoint);
         ArrayList<OverlayItem> items =new ArrayList<>();
-        OverlayItem home = new OverlayItem("Rallo's Office","my Office "
-                ,new GeoPoint(43.65020,7.00517));
+        OverlayItem home = new OverlayItem("you'r","aeroport "
+                ,new GeoPoint(this.latitude,this.longitude));
         Drawable m = home.getMarker(0);
         items.add(home);
 
@@ -70,5 +76,13 @@ public class mapFragment extends Fragment {
         map.getOverlays().add(mOverlay);
 
         return mapFragmentView;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
     }
 }
