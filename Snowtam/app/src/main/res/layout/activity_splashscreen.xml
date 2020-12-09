@@ -15,57 +15,62 @@
         android:layout_marginStart="49dp"
         android:layout_marginTop="61dp"
         android:layout_marginEnd="49dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="299dp"
         android:src="@drawable/airplain_logo"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintBottom_toTopOf="@+id/register"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"></ImageView>
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="313dp"
-        android:layout_height="57dp"
-        android:layout_marginStart="29dp"
-        android:layout_marginEnd="29dp"
-        android:layout_marginBottom="243dp"
-        android:fontFamily="casual"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="49dp"
+        android:layout_marginEnd="49dp"
+        android:layout_marginBottom="202dp"
+        android:fontFamily="cursive"
         android:text="Snowtam App"
         android:textAlignment="center"
+        android:textColor="@android:color/black"
         android:textSize="38sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/register"
+        app:layout_constraintBottom_toTopOf="@+id/login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <Button
-        android:id="@+id/login"
-        android:layout_width="0dp"
-        android:layout_height="43dp"
-        android:layout_marginStart="34dp"
-        android:layout_marginEnd="23dp"
-        android:background="@drawable/my_button_bg"
-        android:text="Login"
-        android:textSize="20sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/register"
-        app:layout_constraintEnd_toStartOf="@+id/register"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
         android:id="@+id/register"
         android:layout_width="162dp"
 
-        android:layout_height="39dp"
-        android:layout_marginEnd="29dp"
-        android:layout_marginBottom="60dp"
+        android:layout_height="43dp"
+        android:layout_marginEnd="33dp"
+        android:layout_marginBottom="101dp"
         android:background="@android:color/black"
+        android:fontFamily="cursive"
         android:text="Register"
         android:textColor="@android:color/white"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/login"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+    <Button
+        android:id="@+id/login"
+        android:layout_width="157dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="97dp"
+        android:background="@drawable/my_button_bg"
+        android:fontFamily="cursive"
+        android:text="Login"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/register"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
 

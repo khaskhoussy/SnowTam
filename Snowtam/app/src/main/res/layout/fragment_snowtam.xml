@@ -10,30 +10,42 @@
 
     <TextView
         android:id="@+id/airport_name_tv"
-        android:layout_width="411dp"
-        android:layout_height="68dp"
-        android:layout_marginBottom="14dp"
+        android:layout_width="417dp"
+        android:layout_height="69dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="9dp"
         android:lineSpacingExtra="30sp"
         android:textAlignment="center"
         android:textColor="@android:color/black"
         android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/tabs"
+        app:layout_constraintBottom_toTopOf="@+id/location"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <Button
+        android:id="@+id/location"
+        android:layout_width="409dp"
+        android:layout_height="73dp"
+        android:layout_marginBottom="12dp"
+        android:background="@drawable/my_button_bg"
+        android:text="Show Location On Map"
+        app:layout_constraintBottom_toTopOf="@+id/tabs"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/airport_name_tv" />
+
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabs"
-        android:layout_width="match_parent"
-        android:layout_height="77dp"
-        android:layout_marginBottom="8dp"
+        android:layout_width="413dp"
+        android:layout_height="75dp"
         android:background="#49a3bf"
 
         android:elevation="4dp"
         app:layout_constraintBottom_toTopOf="@+id/viewpager"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/airport_name_tv"
+        app:layout_constraintTop_toBottomOf="@+id/location"
         app:tabIndicatorColor="#ffffff"
         app:tabIndicatorHeight="5dp"
         app:tabMode="fixed"
@@ -48,16 +60,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tabs">
-
-        <Button
-            android:id="@+id/location"
-            android:layout_width="331dp"
-            android:layout_height="139dp"
-            android:layout_marginBottom="73dp"
-            android:text="Show Location" />
-
-
-
 
 
     </androidx.viewpager.widget.ViewPager>

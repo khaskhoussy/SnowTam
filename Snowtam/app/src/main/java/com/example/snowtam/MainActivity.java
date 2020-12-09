@@ -46,6 +46,7 @@ public class MainActivity  extends AppCompatActivity implements NavigationView.O
     }
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        Intent intent = new Intent(MainActivity.this, SplashscreenActivity.class);
         switch (item.getItemId()) {
           case R.id.nav_search:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
@@ -59,12 +60,12 @@ public class MainActivity  extends AppCompatActivity implements NavigationView.O
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new mapFragment()).commit();
                 break;
-           /* case R.id.nav_share:
-                Toast.makeText(this, "Share", Toast.LENGTH_SHORT).show();
+            case R.id.nav_disconnect:
+                startActivity(intent);
                 break;
-            case R.id.nav_send:
-                Toast.makeText(this, "Send", Toast.LENGTH_SHORT).show();
-                break;*/
+            case R.id.nav_About:
+                Toast.makeText(this, "ENSIM IPS PROMO", Toast.LENGTH_SHORT).show();
+                break;
         }
         drawer.closeDrawer(GravityCompat.START);
         return true;
