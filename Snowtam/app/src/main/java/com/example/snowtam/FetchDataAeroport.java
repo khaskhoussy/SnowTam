@@ -28,12 +28,31 @@ public class FetchDataAeroport extends AsyncTask<Void,Void,Void> {
     public  static double longitude2 ;
     public  static double latitude3;
     public  static double longitude3 ;
-
+    public static String name1;
+    public static String name2;
+    public static String name3;
 
     private  String retrieveData (String search){
-        String data ="";
-        try {
-            URL url = new URL("https://applications.icao.int/dataservices/api/indicators-list?api_key=b0736d30-372e-11eb-854c-318dff0799ba&state=&airports="+search+"&format=json");
+        String data ="[\n" +
+                "  {\n" +
+                "    \"countryName\": \"Norway\",\n" +
+                "    \"countryCode\": \"NOR\",\n" +
+                "    \"airportName\": \"Bodo\",\n" +
+                "    \"cityName\": \"Bodo\",\n" +
+                "    \"latitude\": 67.26916666666666,\n" +
+                "    \"longitude\": 14.365277777777777,\n" +
+                "    \"airportCode\": \"ENBO\",\n" +
+                "    \"geometry\": {\n" +
+                "      \"type\": \"Point\",\n" +
+                "      \"coordinates\": [\n" +
+                "        14.365277777777777,\n" +
+                "        67.26916666666666\n" +
+                "      ]\n" +
+                "    }\n" +
+                "  }\n" +
+                "]";
+      /*  try {
+            URL url = new URL(""+search+"&states=");
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
             InputStream inputStream = httpURLConnection.getInputStream();
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
@@ -46,7 +65,7 @@ public class FetchDataAeroport extends AsyncTask<Void,Void,Void> {
             malformedURLException.printStackTrace();
         } catch (IOException ioException) {
             ioException.printStackTrace();
-        }
+        }*/
         return data ;
     }
 
@@ -61,12 +80,22 @@ public class FetchDataAeroport extends AsyncTask<Void,Void,Void> {
         for (int i = 0 ;i <=3 ; i++)
             result = result +objects[1].split("\",")[i]+"\n";
 
-        String latitudeS =  objects[1].split("\",")[4].split(":")[1];
-        String lon = objects[1].split("\",")[5].split(":")[1] ;
+     //   String latitudeS =  objects[1].split("\",")[4].split(":")[1];
+       // String lon = objects[1].split("\",")[5].split(":")[1] ;
 
 
 
 
+        return result.replaceAll("\"","");
+    }
+
+    private String name(String data)
+    {
+        String result="" ;
+        String objects[] = null;
+        objects = data.split("\\{");
+        String object[] =objects[1].split("\",");
+      result= objects[1].split("\",")[2].split(":")[1].split(",")[0];
         return result.replaceAll("\"","");
     }
 
@@ -100,25 +129,31 @@ public class FetchDataAeroport extends AsyncTask<Void,Void,Void> {
                 result1 = searchAeroport(retrieveData(this.codeSearch.split(";")[0]));
                 latitude1 = Double.parseDouble(Latitude(retrieveData(this.codeSearch.split(";")[0])));
                 longitude1 = Double.parseDouble(longitude(retrieveData(this.codeSearch.split(";")[0])));
+                name1=name(retrieveData(this.codeSearch.split(";")[0]));
                 break;
             case 2 :
                 result1 = searchAeroport(retrieveData(this.codeSearch.split(";")[0]));
                 latitude1 = Double.parseDouble(Latitude(retrieveData(this.codeSearch.split(";")[0])));
                 longitude1 = Double.parseDouble(longitude(retrieveData(this.codeSearch.split(";")[0])));
+                name1=name(retrieveData(this.codeSearch.split(";")[0]));
                 result2 = searchAeroport(retrieveData(this.codeSearch.split(";")[1]));
                 latitude2 = Double.parseDouble(Latitude(retrieveData(this.codeSearch.split(";")[1])));
                 longitude2 = Double.parseDouble(longitude(retrieveData(this.codeSearch.split(";")[1])));
+                name2=name(retrieveData(this.codeSearch.split(";")[1]));
                 break;
             case 3 :
                 result1 = searchAeroport(retrieveData(this.codeSearch.split(";")[0]));
                 latitude1 = Double.parseDouble(Latitude(retrieveData(this.codeSearch.split(";")[0])));
                 longitude1 = Double.parseDouble(longitude(retrieveData(this.codeSearch.split(";")[0])));
+                name1=name(retrieveData(this.codeSearch.split(";")[0]));
                 result2 = searchAeroport(retrieveData(this.codeSearch.split(";")[1]));
                 latitude2 = Double.parseDouble(Latitude(retrieveData(this.codeSearch.split(";")[1])));
                 longitude2 = Double.parseDouble(longitude(retrieveData(this.codeSearch.split(";")[1])));
+                name2=name(retrieveData(this.codeSearch.split(";")[1]));
                 result3 = searchAeroport(retrieveData(this.codeSearch.split(";")[2]));
                 latitude3 = Double.parseDouble(Latitude(retrieveData(this.codeSearch.split(";")[2])));
                 longitude3 = Double.parseDouble(longitude(retrieveData(this.codeSearch.split(";")[2])));
+                name3=name(retrieveData(this.codeSearch.split(";")[2]));
                 break;
         }
 
@@ -131,7 +166,7 @@ public class FetchDataAeroport extends AsyncTask<Void,Void,Void> {
         if(result1 != null) {
             SearchFragment.textView1.setText(result1);
 
-            }
+        }
         else
             SearchFragment.textView1.setText("no Search here ");
         if(result2 != null) {

@@ -4,17 +4,14 @@ import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-
 
 
 public class SearchFragment extends Fragment {
@@ -28,59 +25,60 @@ public class SearchFragment extends Fragment {
 
     public TextView searchBar ;
     @Nullable
-        @Override
-        public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-            View view = inflater.inflate(R.layout.fragment_search, container, false);
-            textView1= view.findViewById(R.id.airoport1);
-            textView2= view.findViewById(R.id.airoport2);
-            textView3= view.findViewById(R.id.airoport3);
-            textView4= view.findViewById(R.id.airoport4);
-            searchBar = view.findViewById(R.id.editText);
-            Button button = (Button) view.findViewById(R.id.button2);
+        View view = inflater.inflate(R.layout.fragment_search, container, false);
+        textView1= view.findViewById(R.id.airoport1);
+        textView2= view.findViewById(R.id.airoport2);
+        textView3= view.findViewById(R.id.airoport3);
+        textView4= view.findViewById(R.id.airoport4);
+        searchBar = view.findViewById(R.id.editText);
+        Button button = (Button) view.findViewById(R.id.button2);
 
-            button.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-                    FetchDataAeroport process = new FetchDataAeroport();
-                    process.setCodeSearch(searchBar.getText().toString());
-                    process.execute();
-
-
+                FetchDataAeroport process = new FetchDataAeroport();
+                process.setCodeSearch(searchBar.getText().toString());
+                process.execute();
 
 
-                }
-            });
 
-            textView1.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
 
-                    FetchDataAeroport fetchDataAeroport = new FetchDataAeroport();
-                    SnowTam fragment = new SnowTam();
-                    FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                    if( !textView1.getText().toString().equals("Result1")) {
+            }
+        });
 
-                        if(searchBar.getText().toString().contains(";")) {
-                            fragment.setSearchFor(searchBar.getText().toString().split(";")[0]);
-                            fragment.setLatitude(FetchDataAeroport.latitude1);
-                            fragment.setLongitude(FetchDataAeroport.longitude1);
+        textView1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-                        }
-                        else
-                            fragment.setSearchFor(searchBar.getText().toString());
+                FetchDataAeroport fetchDataAeroport = new FetchDataAeroport();
+                SnowTam fragment = new SnowTam();
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                if( !textView1.getText().toString().equals("Result1")) {
 
-                            fragment.setLatitude(FetchDataAeroport.latitude1);
-                            fragment.setLongitude(FetchDataAeroport.longitude1);
+                    if(searchBar.getText().toString().contains(";")) {
+                        fragment.setSearchFor(searchBar.getText().toString().split(";")[0]);
+                        fragment.setLatitude(FetchDataAeroport.latitude1);
+                        fragment.setLongitude(FetchDataAeroport.longitude1);
+                        fragment.setName(FetchDataAeroport.name1);
 
-                        System.out.println(searchBar.getText().toString().split(";")[0]);
-                        transaction.replace(R.id.fragment_container, fragment);
-                        transaction.commit();
                     }
+                    else
+                        fragment.setSearchFor(searchBar.getText().toString());
 
+                    fragment.setLatitude(FetchDataAeroport.latitude1);
+                    fragment.setLongitude(FetchDataAeroport.longitude1);
+                    fragment.setName(FetchDataAeroport.name1);
+                    System.out.println(searchBar.getText().toString().split(";")[0]);
+                    transaction.replace(R.id.fragment_container, fragment);
+                    transaction.commit();
                 }
-            });
+
+            }
+        });
 
         textView2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -117,7 +115,7 @@ public class SearchFragment extends Fragment {
 
 
         return view;
-        }
-
-
     }
+
+
+}
