@@ -260,8 +260,7 @@ public class FetchDataSnowTam extends AsyncTask<Void,Void,Void> {
                 "  }\n" +
                 "]";
       /*  try {
-            URL url = new URL("https://v4p4sz5ijk.execute-api.us-east-1.amazonaws.com/anbdata/states/notams/notams-realtime-list?" +
-            "api_key=c2ff65c0-ec95-11e8-acf9-1d6bfa3c323d&format=json&criticality=&locations="+search);
+            URL url = new URL("");
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
             InputStream inputStream = httpURLConnection.getInputStream();
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
