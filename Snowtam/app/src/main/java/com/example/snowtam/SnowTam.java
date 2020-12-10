@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
@@ -46,6 +47,7 @@ public class SnowTam extends Fragment {
         view = inflater.inflate(R.layout.fragment_snowtam, container, false);
     //   decodedSnowtam=getArguments().getString("decoded");
 
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Airport Snowtam");
 
         FetchDataSnowTam process = new FetchDataSnowTam();
         process.setCodeSnowTam(this.searchFor);
@@ -70,7 +72,7 @@ public class SnowTam extends Fragment {
                 fragment.setLatitude(latitude);
                 fragment.setLongitude(longitude);
                 transaction.replace(R.id.fragment_container, fragment);
-                transaction.commit();
+                transaction.addToBackStack(null).commit();
 
             }
         });

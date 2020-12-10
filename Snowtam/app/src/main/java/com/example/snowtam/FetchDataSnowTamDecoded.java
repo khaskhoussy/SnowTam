@@ -1,5 +1,7 @@
 package com.example.snowtam;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 
 public class FetchDataSnowTamDecoded {
@@ -29,12 +31,12 @@ public class FetchDataSnowTamDecoded {
                 i = 0;
             }
 
-        if (split[1].contains("B)")) {
-                split = split[1].split("B\\)");
-                Alphabets.set(i, split[0]);
-                i = 1;
-                Alphabets.set(i, split[1]);
-            }
+            if (split[1].contains("B)")) {
+                    split = split[1].split("B\\)");
+                    Alphabets.set(i, split[0]);
+                    i = 1;
+                    Alphabets.set(i, split[1]);
+                }
             if (split[1].contains("C)")) {
                 split = split[1].split("C\\)");
                 Alphabets.set(i, split[0]);
@@ -144,7 +146,7 @@ public class FetchDataSnowTamDecoded {
                 i = 19;
                 Alphabets.set(i, split[1]);
             } else {
-                this.SnowtamDecoded(split[1], AirportName);
+                Log.e("NO RESULT", " Can't be decoded");
             }
 
 

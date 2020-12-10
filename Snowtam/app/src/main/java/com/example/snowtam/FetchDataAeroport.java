@@ -21,6 +21,7 @@ public class FetchDataAeroport extends AsyncTask<Void,Void,Void> {
     String result1 =null ;
     String result2 =null;
     String result3 =null;
+    String result4 =null;
 
     public  static double latitude1 ;
     public  static double longitude1 ;
@@ -28,12 +29,15 @@ public class FetchDataAeroport extends AsyncTask<Void,Void,Void> {
     public  static double longitude2 ;
     public  static double latitude3;
     public  static double longitude3 ;
+    public  static double latitude4;
+    public  static double longitude4 ;
     public static String name1;
     public static String name2;
     public static String name3;
+    public static String name4;
 
     private  String retrieveData (String search){
-        String data ="[\n" +
+     /*   String data ="[\n" +
                 "  {\n" +
                 "    \"countryName\": \"Norway\",\n" +
                 "    \"countryCode\": \"NOR\",\n" +
@@ -50,9 +54,11 @@ public class FetchDataAeroport extends AsyncTask<Void,Void,Void> {
                 "      ]\n" +
                 "    }\n" +
                 "  }\n" +
-                "]";
-      /*  try {
-            URL url = new URL(""+search+"&states=");
+                "]";*/
+        String data="";
+       try {
+            URL url = new URL("https://applications.icao.int/dataservices/api/indicators-list?api_key=b40daea0-3ad6-11eb-8f64-ab7a94a1fa08" +
+                    "&state=&airports="+search+"&format=json");
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
             InputStream inputStream = httpURLConnection.getInputStream();
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
@@ -65,7 +71,7 @@ public class FetchDataAeroport extends AsyncTask<Void,Void,Void> {
             malformedURLException.printStackTrace();
         } catch (IOException ioException) {
             ioException.printStackTrace();
-        }*/
+        }
         return data ;
     }
 
@@ -155,6 +161,24 @@ public class FetchDataAeroport extends AsyncTask<Void,Void,Void> {
                 longitude3 = Double.parseDouble(longitude(retrieveData(this.codeSearch.split(";")[2])));
                 name3=name(retrieveData(this.codeSearch.split(";")[2]));
                 break;
+            case 4 :
+                result1 = searchAeroport(retrieveData(this.codeSearch.split(";")[0]));
+                latitude1 = Double.parseDouble(Latitude(retrieveData(this.codeSearch.split(";")[0])));
+                longitude1 = Double.parseDouble(longitude(retrieveData(this.codeSearch.split(";")[0])));
+                name1=name(retrieveData(this.codeSearch.split(";")[0]));
+                result2 = searchAeroport(retrieveData(this.codeSearch.split(";")[1]));
+                latitude2 = Double.parseDouble(Latitude(retrieveData(this.codeSearch.split(";")[1])));
+                longitude2 = Double.parseDouble(longitude(retrieveData(this.codeSearch.split(";")[1])));
+                name2=name(retrieveData(this.codeSearch.split(";")[1]));
+                result3 = searchAeroport(retrieveData(this.codeSearch.split(";")[2]));
+                latitude3 = Double.parseDouble(Latitude(retrieveData(this.codeSearch.split(";")[2])));
+                longitude3 = Double.parseDouble(longitude(retrieveData(this.codeSearch.split(";")[2])));
+                name3=name(retrieveData(this.codeSearch.split(";")[2]));
+                result4 = searchAeroport(retrieveData(this.codeSearch.split(";")[3]));
+                latitude4 = Double.parseDouble(Latitude(retrieveData(this.codeSearch.split(";")[3])));
+                longitude4 = Double.parseDouble(longitude(retrieveData(this.codeSearch.split(";")[3])));
+                name4=name(retrieveData(this.codeSearch.split(";")[3]));
+                break;
         }
 
         return null;
@@ -164,24 +188,31 @@ public class FetchDataAeroport extends AsyncTask<Void,Void,Void> {
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
         if(result1 != null) {
-            SearchFragment.textView1.setText(result1);
+            SearchFragment.textView1.setText(result1+"\n"+"Click me for more Details ");
+
 
         }
         else
-            SearchFragment.textView1.setText("no Search here ");
+            SearchFragment.textView1.setText("");
         if(result2 != null) {
 //            Log.d("Success", result1);
 //            Log.d("Success", result1);
-            SearchFragment.textView2.setText(result2);
+            SearchFragment.textView2.setText(result2 +"\n"+"Click me for more Details ");
         }
         else
-            SearchFragment.textView2.setText("no result here ");
+            SearchFragment.textView2.setText("");
         if(result3 != null) {
 //            Log.d("Success", result1);
-            SearchFragment.textView3.setText(result3);
+            SearchFragment.textView3.setText(result3+"\n"+"Click me for more Details ");
         }
         else
-            SearchFragment.textView3.setText("no Result here ");
+            SearchFragment.textView3.setText("");
+        if(result4 != null) {
+//            Log.d("Success", result1);
+            SearchFragment.textView4.setText(result4+"\n"+"Click me for more Details ");
+        }
+        else
+            SearchFragment.textView4.setText(" ");
 
     }
 
