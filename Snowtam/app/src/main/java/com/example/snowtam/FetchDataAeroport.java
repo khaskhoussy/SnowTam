@@ -57,7 +57,7 @@ public class FetchDataAeroport extends AsyncTask<Void,Void,Void> {
                 "]";*/
         String data="";
        try {
-            URL url = new URL("https://applications.icao.int/dataservices/api/indicators-list?api_key=2d7d14c0-3ad1-11eb-b135-1d1ea0319549" +
+            URL url = new URL("https://applications.icao.int/dataservices/api/indicators-list?api_key=b40daea0-3ad6-11eb-8f64-ab7a94a1fa08" +
                     "&state=&airports="+search+"&format=json");
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
             InputStream inputStream = httpURLConnection.getInputStream();
