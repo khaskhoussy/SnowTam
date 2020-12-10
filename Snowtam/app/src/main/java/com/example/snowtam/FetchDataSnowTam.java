@@ -261,26 +261,25 @@ public class FetchDataSnowTam extends AsyncTask<Void,Void,Void> {
             "  }\n" +
             "]";
 
- /* String data="";
+  String data1="";
        try {
-                URL url = new URL("https://applications.icao.int/dataservices/api/notams-realtime-list?" +
-                        "api_key=2d7d14c0-3ad1-11eb-b135-1d1ea0319549" +
-                        "&format=json&criticality=1&locations="+search);
+                URL url = new URL("https://applications.icao.int/dataservices/api/notams-realtime-list?api_key=2d7d14c0-3ad1-11eb-b135-1d1ea0319549&format=json&criticality=1&locations="+search);
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
             InputStream inputStream = httpURLConnection.getInputStream();
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
             String line = "";
             while( line != null){
                 line = bufferedReader.readLine();
-                data = data +line ;
+
+               data1 = data1 +line ;
             }
         } catch (MalformedURLException malformedURLException) {
             malformedURLException.printStackTrace();
         } catch (IOException ioException) {
             ioException.printStackTrace();
-        }*/
+        }
 
-        return data ;
+        return data1 ;
     }
 
 
