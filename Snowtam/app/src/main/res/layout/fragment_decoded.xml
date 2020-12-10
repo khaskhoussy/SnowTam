@@ -7,9 +7,9 @@
 
     <TextView
         android:id="@+id/decoded"
-        android:layout_width="match_parent"
+        android:layout_width="370dp"
         android:layout_height="match_parent"
-
+        android:layout_gravity="top|center"
         android:textColor="@android:color/black"
         android:textSize="20sp"
          />

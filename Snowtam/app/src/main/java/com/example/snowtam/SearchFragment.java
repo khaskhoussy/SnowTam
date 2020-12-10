@@ -3,6 +3,7 @@ package com.example.snowtam;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -27,7 +28,7 @@ public class SearchFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Search Snowtam");
         View view = inflater.inflate(R.layout.fragment_search, container, false);
         textView1= view.findViewById(R.id.airoport1);
         textView2= view.findViewById(R.id.airoport2);
@@ -54,6 +55,7 @@ public class SearchFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
+
                 FetchDataAeroport fetchDataAeroport = new FetchDataAeroport();
                 SnowTam fragment = new SnowTam();
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
@@ -74,7 +76,7 @@ public class SearchFragment extends Fragment {
                     fragment.setName(FetchDataAeroport.name1);
                     System.out.println(searchBar.getText().toString().split(";")[0]);
                     transaction.replace(R.id.fragment_container, fragment);
-                    transaction.commit();
+                    transaction.addToBackStack(null).commit();
                 }
 
             }
@@ -91,7 +93,7 @@ public class SearchFragment extends Fragment {
                     fragment.setLatitude(FetchDataAeroport.latitude2);
                     fragment.setLongitude(FetchDataAeroport.longitude2);
                     transaction.replace(R.id.fragment_container, fragment);
-                    transaction.commit();
+                    transaction.addToBackStack(null).commit();
                 }
             }
         });
@@ -106,7 +108,7 @@ public class SearchFragment extends Fragment {
                     fragment.setLatitude(FetchDataAeroport.latitude3);
                     fragment.setLongitude(FetchDataAeroport.longitude3);
                     transaction.replace(R.id.fragment_container, fragment);
-                    transaction.commit();
+                    transaction.addToBackStack(null).commit();
                 }
 
             }

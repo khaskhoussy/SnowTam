@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import org.osmdroid.api.IMapController;
@@ -45,6 +46,7 @@ public class mapFragment extends Fragment {
         Configuration.getInstance().load(getActivity()
                 , PreferenceManager.getDefaultSharedPreferences(getActivity()));
 
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Map");
         mapFragmentView = inflater.inflate(R.layout.fragment_map, container, false);
         map =  mapFragmentView.findViewById(R.id.map);
         map.setTileSource(TileSourceFactory.MAPNIK);//render

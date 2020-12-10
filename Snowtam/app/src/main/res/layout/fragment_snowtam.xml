@@ -10,8 +10,8 @@
 
     <TextView
         android:id="@+id/airport_name_tv"
-        android:layout_width="417dp"
-        android:layout_height="69dp"
+        android:layout_width="419dp"
+        android:layout_height="64dp"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="9dp"
         android:lineSpacingExtra="30sp"
@@ -25,8 +25,10 @@
 
     <Button
         android:id="@+id/location"
-        android:layout_width="409dp"
-        android:layout_height="73dp"
+        android:layout_width="407dp"
+        android:layout_height="63dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginEnd="1dp"
         android:layout_marginBottom="12dp"
         android:background="@drawable/my_button_bg"
         android:text="Show Location On Map"
@@ -37,10 +39,11 @@
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabs"
-        android:layout_width="413dp"
-        android:layout_height="75dp"
-        android:background="#49a3bf"
+        android:layout_width="430dp"
+        android:layout_height="53dp"
+        android:layout_marginBottom="13dp"
 
+        android:background="#49a3bf"
         android:elevation="4dp"
         app:layout_constraintBottom_toTopOf="@+id/viewpager"
         app:layout_constraintEnd_toEndOf="parent"
@@ -56,6 +59,9 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_below="@+id/tabs"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
