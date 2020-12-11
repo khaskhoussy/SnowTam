@@ -19,7 +19,7 @@ import com.google.android.material.navigation.NavigationView;
 import java.io.FileOutputStream;
 
 
-public class MainActivity  extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private DrawerLayout drawer;
 
@@ -39,17 +39,18 @@ public class MainActivity  extends AppCompatActivity implements NavigationView.O
         toggle.syncState();
 
 
-       if (savedInstanceState == null) {
+        if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                     new SearchFragment()).commit();
             navigationView.setCheckedItem(R.id.nav_search);
         }
     }
+
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         Intent intent = new Intent(MainActivity.this, SplashscreenActivity.class);
         switch (item.getItemId()) {
-          case R.id.nav_search:
+            case R.id.nav_search:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new SearchFragment()).commit();
                 break;
@@ -75,6 +76,7 @@ public class MainActivity  extends AppCompatActivity implements NavigationView.O
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
     @Override
     public void onBackPressed() {
         if (drawer.isDrawerOpen(GravityCompat.START)) {

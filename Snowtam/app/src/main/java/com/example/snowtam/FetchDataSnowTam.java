@@ -19,7 +19,7 @@ import java.net.URL;
 import java.util.ArrayList;
 
 
-public class FetchDataSnowTam extends AsyncTask<Void,Void,Void> {
+public class FetchDataSnowTam extends AsyncTask<Void, Void, Void> {
 
 
     ArrayList<String> myResult = new ArrayList<>();
@@ -27,22 +27,20 @@ public class FetchDataSnowTam extends AsyncTask<Void,Void,Void> {
 
     public String textCode;
 
-    FetchDataSnowTamDecoded fetchedDecoded=new FetchDataSnowTamDecoded();
-    String decodedSnowtam="";
-
+    FetchDataSnowTamDecoded fetchedDecoded = new FetchDataSnowTamDecoded();
+    String decodedSnowtam = "";
 
 
     //look if wi have snowTam or not and render it if there is one
-    private String checkSnowTam(String object){
+    private String checkSnowTam(String object) {
 
-        String all="" ;
+        String all = "";
 
-        for (int i =0;i<object.split("\",").length-1;i++)
-        {
-            if(object.split("\",")[i].contains("all"))
+        for (int i = 0; i < object.split("\",").length - 1; i++) {
+            if (object.split("\",")[i].contains("all"))
                 all = object.split("\",")[i];
         }
-        if(all.contains("SNOWTAM"))
+        if (all.contains("SNOWTAM"))
             return all;
 
         return all = null;
@@ -50,8 +48,8 @@ public class FetchDataSnowTam extends AsyncTask<Void,Void,Void> {
 
 
     //retrive all data that exist in the URL
-    private  String retrieveData (String search){
-        String data ="[\n" +
+    private String retrieveData(String search) {
+        String data = "[\n" +
                 "  {\n" +
                 "    \"id\": \"V0449/20\",\n" +
                 "    \"entity\": \"PI\",\n" +
@@ -261,17 +259,17 @@ public class FetchDataSnowTam extends AsyncTask<Void,Void,Void> {
                 "  }\n" +
                 "]";
 
-        String data1="";
+        String data1 = "";
         try {
-            URL url = new URL("https://applications.icao.int/dataservices/api/notams-realtime-list?api_key=f9083fe0-3b97-11eb-bd1b-5bb1d23c180e&format=json&criticality=1&locations="+search);
+            URL url = new URL("https://applications.icao.int/dataservices/api/notams-realtime-list?api_key=fe13ea20-3ba6-11eb-aea9-9dfe8a09a8d1&format=json&criticality=1&locations=" + search);
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
             InputStream inputStream = httpURLConnection.getInputStream();
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
             String line = "";
-            while( line != null){
+            while (line != null) {
                 line = bufferedReader.readLine();
 
-                data1 = data1 +line ;
+                data1 = data1 + line;
             }
         } catch (MalformedURLException malformedURLException) {
             malformedURLException.printStackTrace();
@@ -279,22 +277,19 @@ public class FetchDataSnowTam extends AsyncTask<Void,Void,Void> {
             ioException.printStackTrace();
         }
 
-        return data1 ;
+        return data1;
     }
-
 
 
     // if SnowTam exists return it in List else return null
     @RequiresApi(api = Build.VERSION_CODES.N)
-    private ArrayList<String> searchSnowTam(String data )
-    {
-        ArrayList<String> result=new ArrayList<String>() ;
+    private ArrayList<String> searchSnowTam(String data) {
+        ArrayList<String> result = new ArrayList<String>();
         String objects[] = null;
 
         objects = data.split("\\{");
-        for(int i= 1 ;i<objects.length-1 ;i++)
-        {
-            if(checkSnowTam(objects[i]) != null) {
+        for (int i = 1; i < objects.length - 1; i++) {
+            if (checkSnowTam(objects[i]) != null) {
                 for (int j = 0; j < checkSnowTam(objects[i]).split("n").length - 1; j++)
                     result.add(checkSnowTam(objects[i]).split("n")[j]);
                 return result;
@@ -302,7 +297,6 @@ public class FetchDataSnowTam extends AsyncTask<Void,Void,Void> {
         }
         return null;
     }
-
 
 
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -319,19 +313,17 @@ public class FetchDataSnowTam extends AsyncTask<Void,Void,Void> {
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
 
-        if(myResult != null)
-        {
+        if (myResult != null) {
             for (int i = 2; i < myResult.size(); i++)
-                textCode = textCode + myResult.get(i).substring(0, myResult.get(i).length() - 1)+ "\n";//delete the \ that exist in the End
+                textCode = textCode + myResult.get(i).substring(0, myResult.get(i).length() - 1) + "\n";//delete the \ that exist in the End
 
             Log.e("result", textCode);
-            decodedSnowtam=fetchedDecoded.SnowtamDecoded(textCode,"Airport: ");
+            decodedSnowtam = fetchedDecoded.SnowtamDecoded(textCode);
 
             OriginalFragment.tv.setText(textCode);
             DecodedFragment.decodedTV.setText(decodedSnowtam);
 
-        }
-        else
+        } else
             DecodedFragment.decodedTV.setText("No SnowTam");
         //  Log.d("Success",myResult.toString());
 

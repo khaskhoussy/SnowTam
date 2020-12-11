@@ -12,9 +12,9 @@ import androidx.fragment.app.Fragment;
 
 public class ProfileFragment extends Fragment {
 
-    TextView profileFirstName ;
-    TextView profileLastName ;
-    TextView profileEmail ;
+    TextView profileFirstName;
+    TextView profileLastName;
+    TextView profileEmail;
 
     @Nullable
     @Override
@@ -28,6 +28,6 @@ public class ProfileFragment extends Fragment {
         profileLastName.setText(LoginFragment.connectedUser.getLastName());
         profileEmail.setText(LoginFragment.connectedUser.getEmail());
 
-        return view ;
+        return view;
     }
 }

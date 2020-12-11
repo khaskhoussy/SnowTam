@@ -24,11 +24,11 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 
-public class LoginFragment extends Fragment  {
-    Button loginButton ;
-    EditText email ;
-    EditText passowrd ;
-    public static  UsersDataBase connectedUser = null;
+public class LoginFragment extends Fragment {
+    Button loginButton;
+    EditText email;
+    EditText passowrd;
+    public static UsersDataBase connectedUser = null;
 
     public LoginFragment() {
     }
@@ -39,22 +39,21 @@ public class LoginFragment extends Fragment  {
 
         View view = inflater.inflate(R.layout.fragment_login, container, false);
         loginButton = view.findViewById(R.id.loginButton);
-        email= view.findViewById(R.id.email);
+        email = view.findViewById(R.id.email);
         passowrd = view.findViewById(R.id.pswd);
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    if(doesUserExist(email.getText().toString(),passowrd.getText().toString()).equals("n"))
-                Toast.makeText(getActivity().getBaseContext(), "User does not Exist ", Toast.LENGTH_LONG).show();
-                    else if(doesUserExist(email.getText().toString(),passowrd.getText().toString()).equals("p"))
-                        Toast.makeText(getActivity().getBaseContext(), "Check your password ", Toast.LENGTH_LONG).show();
-                    else
-                    {
-                        Intent intent = new Intent();
-                        intent.setClass(getActivity(), MainActivity.class);
-                        getActivity().startActivity(intent);
-                    }
+                if (doesUserExist(email.getText().toString(), passowrd.getText().toString()).equals("n"))
+                    Toast.makeText(getActivity().getBaseContext(), "User does not Exist ", Toast.LENGTH_LONG).show();
+                else if (doesUserExist(email.getText().toString(), passowrd.getText().toString()).equals("p"))
+                    Toast.makeText(getActivity().getBaseContext(), "Check your password ", Toast.LENGTH_LONG).show();
+                else {
+                    Intent intent = new Intent();
+                    intent.setClass(getActivity(), MainActivity.class);
+                    getActivity().startActivity(intent);
+                }
 
             }
         });
@@ -71,14 +70,13 @@ public class LoginFragment extends Fragment  {
             while ((c = fIn.read()) != -1) {
                 temp = temp + Character.toString((char) c);
             }
-            if(temp == "")
+            if (temp == "")
                 return null;
 
             String allChar[] = temp.split(";");
-            for(int i = 0 ;i<allChar.length-1;i++)
-            {
-                allUsers.add(new UsersDataBase(allChar[i].split(",")[0],allChar[i].split(",")[1],allChar[i].split(",")[2],
-                        allChar[i].split(",")[3],allChar[i].split(",")[4]));
+            for (int i = 0; i < allChar.length - 1; i++) {
+                allUsers.add(new UsersDataBase(allChar[i].split(",")[0], allChar[i].split(",")[1], allChar[i].split(",")[2],
+                        allChar[i].split(",")[3], allChar[i].split(",")[4]));
             }
 
 
@@ -89,28 +87,22 @@ public class LoginFragment extends Fragment  {
         return allUsers;
     }
 
-    String   doesUserExist(String entredmail,String entredPassword){
-        String  result = "n" ;
+    String doesUserExist(String entredmail, String entredPassword) {
+        String result = "n";
 
-       for(int i=0;i<=getAllUsers().size()-1;i++)
-       {
-           if (getAllUsers().get(i).getEmail().equals(entredmail))
-               connectedUser =getAllUsers().get(i);
-       }
-       if (connectedUser != null )
-       {
-           if(connectedUser.getPassword().equals(entredPassword))
-               result = "c";
-           else
-               result = "p";
-       }
+        for (int i = 0; i <= getAllUsers().size() - 1; i++) {
+            if (getAllUsers().get(i).getEmail().equals(entredmail))
+                connectedUser = getAllUsers().get(i);
+        }
+        if (connectedUser != null) {
+            if (connectedUser.getPassword().equals(entredPassword))
+                result = "c";
+            else
+                result = "p";
+        }
 
 
-
-
-       return result ;
-
-
+        return result;
 
 
     }

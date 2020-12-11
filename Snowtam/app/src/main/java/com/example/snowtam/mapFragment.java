@@ -24,16 +24,15 @@ import java.util.ArrayList;
 
 public class mapFragment extends Fragment {
 
-    private double latitude ;
-    private double longitude ;
+    private double latitude;
+    private double longitude;
     private MapView map;
-     View mapFragmentView ;
+    View mapFragmentView;
 
 
-
-    public mapFragment(float latitude ,float longitude) {
-        this.latitude = latitude ;
-        this.longitude = longitude ;
+    public mapFragment(float latitude, float longitude) {
+        this.latitude = latitude;
+        this.longitude = longitude;
     }
 
     public mapFragment() {
@@ -46,18 +45,18 @@ public class mapFragment extends Fragment {
         Configuration.getInstance().load(getActivity()
                 , PreferenceManager.getDefaultSharedPreferences(getActivity()));
 
-        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Map");
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Map");
         mapFragmentView = inflater.inflate(R.layout.fragment_map, container, false);
-        map =  mapFragmentView.findViewById(R.id.map);
+        map = mapFragmentView.findViewById(R.id.map);
         map.setTileSource(TileSourceFactory.MAPNIK);//render
         map.setBuiltInZoomControls(true);//zoomable
-        GeoPoint startPoint = new GeoPoint(this.latitude,this.longitude);
+        GeoPoint startPoint = new GeoPoint(this.latitude, this.longitude);
         IMapController mapController = map.getController();
         mapController.setZoom(15.0);
         mapController.setCenter(startPoint);
-        ArrayList<OverlayItem> items =new ArrayList<>();
-        OverlayItem home = new OverlayItem("you'r","aeroport "
-                ,new GeoPoint(this.latitude,this.longitude));
+        ArrayList<OverlayItem> items = new ArrayList<>();
+        OverlayItem home = new OverlayItem("you'r", "aeroport "
+                , new GeoPoint(this.latitude, this.longitude));
         Drawable m = home.getMarker(0);
         items.add(home);
 

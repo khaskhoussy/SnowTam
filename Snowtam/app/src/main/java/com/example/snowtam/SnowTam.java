@@ -27,27 +27,28 @@ import java.util.List;
 
 public class SnowTam extends Fragment {
 
-    private String searchFor ;
-    private double latitude ;
+    private String searchFor;
+    private double latitude;
     private double longitude;
     private String name;
-    Button location ;
-    public static TextView textView ;
-    public static TextView decodedTV ;
-    public static TextView airport_name_tv ;
+    Button location;
+    public static TextView textView;
+    public static TextView decodedTV;
+    public static TextView airport_name_tv;
 
     public static TabLayout tabLayout;
     public static ViewPager viewPager;
     public static int int_items = 2;
-        public static String decodedSnowtam="";
+    public static String decodedSnowtam = "";
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view ;
+        View view;
         view = inflater.inflate(R.layout.fragment_snowtam, container, false);
-    //   decodedSnowtam=getArguments().getString("decoded");
+        //   decodedSnowtam=getArguments().getString("decoded");
 
-        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Airport Snowtam");
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Airport Snowtam");
 
         FetchDataSnowTam process = new FetchDataSnowTam();
         process.setCodeSnowTam(this.searchFor);
@@ -60,9 +61,9 @@ public class SnowTam extends Fragment {
         textView = view.findViewById(R.id.textView);
 
 
-        airport_name_tv=view.findViewById(R.id.airport_name_tv);
+        airport_name_tv = view.findViewById(R.id.airport_name_tv);
 
-        airport_name_tv.setText("Airport's Name: "+name);
+        airport_name_tv.setText("Airport's Name: " + name);
         location.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -103,7 +104,6 @@ public class SnowTam extends Fragment {
     }
 
 
-
     class MyAdapter extends FragmentPagerAdapter {
 
         public MyAdapter(FragmentManager fm) {
@@ -117,18 +117,18 @@ public class SnowTam extends Fragment {
         @Override
         public Fragment getItem(int position) {
 
-            Fragment fragment=null;
+            Fragment fragment = null;
             Bundle bundle = new Bundle();
-           bundle.putString("e","test");
+            bundle.putString("e", "test");
             switch (position) {
                 case 0:
-                    fragment=new OriginalFragment();
-                  //  fragment.setArguments(bundle);
+                    fragment = new OriginalFragment();
+                    //  fragment.setArguments(bundle);
                     break;
 
                 case 1:
-                    fragment=new DecodedFragment();
-                  fragment.setArguments(bundle);
+                    fragment = new DecodedFragment();
+                    fragment.setArguments(bundle);
             }
             return fragment;
         }

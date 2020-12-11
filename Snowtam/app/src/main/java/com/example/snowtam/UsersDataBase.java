@@ -8,17 +8,17 @@ import java.io.IOException;
 
 
 public class UsersDataBase {
-    private String  id ;
-    private  String firstName ;
+    private String id;
+    private String firstName;
     private String lastName;
-    private String  email;
+    private String email;
 
     private String password;
 
     public UsersDataBase() {
     }
 
-    public UsersDataBase(String  id,String firstName,String lastName , String email, String password) {
+    public UsersDataBase(String id, String firstName, String lastName, String email, String password) {
         this.id = id;
         this.email = email;
         this.password = password;
@@ -27,16 +27,15 @@ public class UsersDataBase {
     }
 
 
-
-    void saveUser(UsersDataBase user)
-    {
+    void saveUser(UsersDataBase user) {
 
     }
-    public String  getId() {
+
+    public String getId() {
         return id;
     }
 
-    public void setId(String  id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -75,6 +74,6 @@ public class UsersDataBase {
     @NonNull
     @Override
     public String toString() {
-        return "id :"+this.id+" userName : "+this.firstName+" lastName : "+this.lastName+" Email : "+this.email+" password :"+this.password;
+        return "id :" + this.id + " userName : " + this.firstName + " lastName : " + this.lastName + " Email : " + this.email + " password :" + this.password;
     }
 }

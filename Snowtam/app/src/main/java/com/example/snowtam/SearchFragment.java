@@ -27,21 +27,24 @@ public class SearchFragment extends Fragment {
     public static Button bres3;
     public static Button bres4;
 
-    public TextView searchBar ;
+    public TextView searchBar;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Search Snowtam");
+        super.onActivityCreated(savedInstanceState);
+
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Search Snowtam");
         View view = inflater.inflate(R.layout.fragment_search, container, false);
-        textView1= view.findViewById(R.id.airoport1);
-        textView2= view.findViewById(R.id.airoport2);
-        textView3= view.findViewById(R.id.airoport3);
-        textView4= view.findViewById(R.id.airoport4);
+        textView1 = view.findViewById(R.id.airoport1);
+        textView2 = view.findViewById(R.id.airoport2);
+        textView3 = view.findViewById(R.id.airoport3);
+        textView4 = view.findViewById(R.id.airoport4);
         searchBar = view.findViewById(R.id.editText);
-        bres1=view.findViewById(R.id.bres1);
-        bres2=view.findViewById(R.id.bres2);
-        bres3=view.findViewById(R.id.bres3);
-        bres4=view.findViewById(R.id.bres4);
+        bres1 = view.findViewById(R.id.bres1);
+        bres2 = view.findViewById(R.id.bres2);
+        bres3 = view.findViewById(R.id.bres3);
+        bres4 = view.findViewById(R.id.bres4);
         Button button = (Button) view.findViewById(R.id.button2);
         SearchFragment.bres1.setVisibility(View.INVISIBLE);
         SearchFragment.bres2.setVisibility(View.INVISIBLE);
@@ -56,8 +59,6 @@ public class SearchFragment extends Fragment {
                 process.execute();
 
 
-
-
             }
         });
 
@@ -69,16 +70,15 @@ public class SearchFragment extends Fragment {
                 FetchDataAeroport fetchDataAeroport = new FetchDataAeroport();
                 SnowTam fragment = new SnowTam();
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                if( !textView1.getText().toString().equals("Result1")) {
+                if (!textView1.getText().toString().equals("Result1")) {
 
-                    if(searchBar.getText().toString().contains(";")) {
+                    if (searchBar.getText().toString().contains(";")) {
                         fragment.setSearchFor(searchBar.getText().toString().split(";")[0]);
                         fragment.setLatitude(FetchDataAeroport.latitude1);
                         fragment.setLongitude(FetchDataAeroport.longitude1);
                         fragment.setName(FetchDataAeroport.name1);
 
-                    }
-                    else
+                    } else
                         fragment.setSearchFor(searchBar.getText().toString());
 
                     fragment.setLatitude(FetchDataAeroport.latitude1);
@@ -98,7 +98,7 @@ public class SearchFragment extends Fragment {
 
                 SnowTam fragment = new SnowTam();
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                if( !textView2.getText().toString().equals("Result2")) {
+                if (!textView2.getText().toString().equals("Result2")) {
                     fragment.setSearchFor(searchBar.getText().toString().split(";")[1]);
                     fragment.setLatitude(FetchDataAeroport.latitude2);
                     fragment.setLongitude(FetchDataAeroport.longitude2);
@@ -113,7 +113,7 @@ public class SearchFragment extends Fragment {
             public void onClick(View v) {
                 SnowTam fragment = new SnowTam();
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                if( !textView3.getText().toString().equals("Result3")) {
+                if (!textView3.getText().toString().equals("Result3")) {
                     fragment.setSearchFor(searchBar.getText().toString().split(";")[2]);
                     fragment.setLatitude(FetchDataAeroport.latitude3);
                     fragment.setLongitude(FetchDataAeroport.longitude3);
@@ -129,7 +129,7 @@ public class SearchFragment extends Fragment {
             public void onClick(View v) {
                 SnowTam fragment = new SnowTam();
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                if( !textView4.getText().toString().equals("Result4")) {
+                if (!textView4.getText().toString().equals("Result4")) {
                     fragment.setSearchFor(searchBar.getText().toString().split(";")[3]);
                     fragment.setLatitude(FetchDataAeroport.latitude4);
                     fragment.setLongitude(FetchDataAeroport.longitude4);

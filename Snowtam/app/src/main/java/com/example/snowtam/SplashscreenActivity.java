@@ -28,31 +28,32 @@ import java.io.OutputStreamWriter;
 public class SplashscreenActivity extends AppCompatActivity {
 
     //variables:
-    Animation topAnim,bottomAnim;
+    Animation topAnim, bottomAnim;
     ImageView img;
     TextView logo;
     Button login;
     Button register;
-    ConstraintLayout view ;
+    ConstraintLayout view;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_splashscreen);
         register = findViewById(R.id.register);
 
         //Animations
-        topAnim= AnimationUtils.loadAnimation(this,R.anim.top_animation);
-        bottomAnim= AnimationUtils.loadAnimation(this,R.anim.bottom_animation);
+        topAnim = AnimationUtils.loadAnimation(this, R.anim.top_animation);
+        bottomAnim = AnimationUtils.loadAnimation(this, R.anim.bottom_animation);
 
         //Hooks
-        img=findViewById(R.id.imageView2);
-        logo=findViewById(R.id.textView);
+        img = findViewById(R.id.imageView2);
+        logo = findViewById(R.id.textView);
 
         img.setAnimation(topAnim);
         logo.setAnimation(bottomAnim);
 
-        login= findViewById(R.id.login);
+        login = findViewById(R.id.login);
         login.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
@@ -66,8 +67,8 @@ public class SplashscreenActivity extends AppCompatActivity {
 
                 FragmentManager fm = getSupportFragmentManager();
                 LoginFragment fl = new LoginFragment();
-               fm.beginTransaction().replace(R.id.container , fl).commit();
-            //user Creation
+                fm.beginTransaction().replace(R.id.container, fl).commit();
+                //user Creation
 //                try {
 //
 //                    OutputStreamWriter outputStreamWriter = new OutputStreamWriter(openFileOutput("testAndroid.txt", Context.MODE_APPEND));
@@ -108,7 +109,7 @@ public class SplashscreenActivity extends AppCompatActivity {
 
                 FragmentManager fm = getSupportFragmentManager();
                 RegisterFragment fl = new RegisterFragment();
-                fm.beginTransaction().replace(R.id.container , fl).commit();
+                fm.beginTransaction().replace(R.id.container, fl).commit();
             }
         });
     }

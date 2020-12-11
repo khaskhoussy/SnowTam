@@ -12,9 +12,9 @@ import androidx.fragment.app.Fragment;
 
 public class DecodedFragment extends Fragment {
     private String searchFor;
-    public static TextView decodedTV ;
+    public static TextView decodedTV;
 
-    FetchDataSnowTamDecoded fetchedDecoded=new FetchDataSnowTamDecoded();
+    FetchDataSnowTamDecoded fetchedDecoded = new FetchDataSnowTamDecoded();
 
     @Nullable
     @Override
@@ -26,16 +26,16 @@ public class DecodedFragment extends Fragment {
        /*FetchDataSnowTam process = new FetchDataSnowTam();
         process.setCodeSnowTam(this.searchFor);
         process.execute();*/
-       // String airportName = getArguments().getString("airportName");
+        // String airportName = getArguments().getString("airportName");
         //String fetchedSnowtam = getArguments().getString("fetchedSnowtam");
-      //  String fetchedSnowtam = process.textCode;
+        //  String fetchedSnowtam = process.textCode;
 
         decodedTV = view.findViewById(R.id.decoded);
-       // decodedSnowtam=fetchedDecoded.SnowtamDecoded(""+fetchedSnowtam,"Airport: ");
-     // decodedTV.setText(decodedSnowtam);
-      // decodedTV.setText(decodedSnowtam);
+        // decodedSnowtam=fetchedDecoded.SnowtamDecoded(""+fetchedSnowtam,"Airport: ");
+        // decodedTV.setText(decodedSnowtam);
+        // decodedTV.setText(decodedSnowtam);
 
-       // decodedTV.setText(decodedSnowtam);
+        // decodedTV.setText(decodedSnowtam);
         return view;
     }
 

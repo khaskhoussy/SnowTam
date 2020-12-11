@@ -15,7 +15,7 @@ import android.widget.TextView;
  * create an instance of this fragment.
  */
 public class OriginalFragment extends Fragment {
-    public static TextView tv ;
+    public static TextView tv;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -61,7 +61,7 @@ public class OriginalFragment extends Fragment {
                              Bundle savedInstanceState) {
 
 
-        View view= inflater.inflate(R.layout.fragment_main, container, false);
+        View view = inflater.inflate(R.layout.fragment_main, container, false);
         tv = view.findViewById(R.id.text_view);
         return view;
     }

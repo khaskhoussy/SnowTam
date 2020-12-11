@@ -48,18 +48,15 @@ public class RegisterFragment extends Fragment {
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(valEmail(email.getText().toString()))
-                {
-                    if(verifierMDP(password.getText().toString(),repeatPassword.getText().toString()))
-                         {
-                                 registerUser();
-                             LoginFragment fragment = new LoginFragment();
-                             FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                             transaction.replace(R.id.container, fragment);
-                             transaction.commit();
-                         }
-                }
-                else
+                if (valEmail(email.getText().toString())) {
+                    if (verifierMDP(password.getText().toString(), repeatPassword.getText().toString())) {
+                        registerUser();
+                        LoginFragment fragment = new LoginFragment();
+                        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                        transaction.replace(R.id.container, fragment);
+                        transaction.commit();
+                    }
+                } else
                     Toast.makeText(getActivity().getBaseContext(), "email Format is invalid!!", Toast.LENGTH_LONG).show();
 
             }
@@ -84,14 +81,13 @@ public class RegisterFragment extends Fragment {
             while ((c = fIn.read()) != -1) {
                 temp = temp + Character.toString((char) c);
             }
-            if(temp == "")
+            if (temp == "")
                 return null;
 
             String allChar[] = temp.split(";");
-            for(int i = 0 ;i<allChar.length-1;i++)
-            {
-                allUsers.add(new UsersDataBase(allChar[i].split(",")[0],allChar[i].split(",")[1],allChar[i].split(",")[2],
-                allChar[i].split(",")[3],allChar[i].split(",")[4]));
+            for (int i = 0; i < allChar.length - 1; i++) {
+                allUsers.add(new UsersDataBase(allChar[i].split(",")[0], allChar[i].split(",")[1], allChar[i].split(",")[2],
+                        allChar[i].split(",")[3], allChar[i].split(",")[4]));
             }
 
 
@@ -102,34 +98,33 @@ public class RegisterFragment extends Fragment {
         return allUsers;
     }
 
-    String putId(ArrayList<UsersDataBase> allUsers){
-        if (allUsers !=null)
-        {
-            String  lastId = getAllUsers().get(getAllUsers().size()-1).getId();
-            lastId = lastId.replace("\n","");
-            int newId =Integer.parseInt(lastId)+1;
-            return Integer.toString(newId)+",";
-        }
-        else
+    String putId(ArrayList<UsersDataBase> allUsers) {
+        if (allUsers != null) {
+            String lastId = getAllUsers().get(getAllUsers().size() - 1).getId();
+            lastId = lastId.replace("\n", "");
+            int newId = Integer.parseInt(lastId) + 1;
+            return Integer.toString(newId) + ",";
+        } else
             return "1,";
     }
-    void registerUser(){
+
+    void registerUser() {
         try {
 
             OutputStreamWriter outputStreamWriter = new OutputStreamWriter(getActivity().openFileOutput("testAndroid.txt", Context.MODE_APPEND));
-            outputStreamWriter.write( putId(getAllUsers())+registerText(firstName,lastName,email,password)+";\n");
+            outputStreamWriter.write(putId(getAllUsers()) + registerText(firstName, lastName, email, password) + ";\n");
             outputStreamWriter.close();
-            File fileDir = new File(getActivity().getFilesDir(),"myfile");
+            File fileDir = new File(getActivity().getFilesDir(), "myfile");
             Toast.makeText(getActivity().getBaseContext(), "Registration is done", Toast.LENGTH_LONG).show();
-        }
-        catch ( IOException e) {
+        } catch (IOException e) {
             Log.e("Exception", "File write failed: " + e.toString());
         }
     }
-    void deleteAllUsers(){
+
+    void deleteAllUsers() {
         PrintWriter writer = null;
         try {
-            File fileDir = new File(getActivity().getFilesDir(),"testAndroid.txt");
+            File fileDir = new File(getActivity().getFilesDir(), "testAndroid.txt");
             writer = new PrintWriter(fileDir);
             writer.print("");
             writer.close();
@@ -137,16 +132,17 @@ public class RegisterFragment extends Fragment {
             e.printStackTrace();
         }
     }
-    boolean verifierMDP(String mdp1,String mdp2){
-        if(mdp1.equals(mdp2))
-            return true ;
+
+    boolean verifierMDP(String mdp1, String mdp2) {
+        if (mdp1.equals(mdp2))
+            return true;
         Toast.makeText(getActivity().getBaseContext(), "verifier votre mot de passe !!", Toast.LENGTH_LONG).show();
-        return false ;
+        return false;
     }
 
-    boolean valEmail(String input){
-        String emailRegex="^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$";
-        Pattern emailPat = Pattern.compile(emailRegex,Pattern.CASE_INSENSITIVE);
+    boolean valEmail(String input) {
+        String emailRegex = "^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$";
+        Pattern emailPat = Pattern.compile(emailRegex, Pattern.CASE_INSENSITIVE);
         Matcher matcher = emailPat.matcher(input);
         return matcher.find();
     }
