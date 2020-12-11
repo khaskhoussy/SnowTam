@@ -7,12 +7,12 @@
 
     <EditText
         android:id="@+id/editText"
-        android:layout_width="392dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="74dp"
+        android:layout_width="393dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="9dp"
         android:layout_marginTop="41dp"
-        android:layout_marginEnd="74dp"
-        android:layout_marginBottom="26dp"
+        android:layout_marginEnd="9dp"
+        android:layout_marginBottom="121dp"
         android:drawableLeft="@drawable/my_icon"
         android:ems="10"
         android:hint="code1;code2;code3;code4"
@@ -23,7 +23,7 @@
         android:textColorHighlight="#49a3bf"
         android:textColorLink="#49a3bf"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintBottom_toTopOf="@+id/bres1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -32,10 +32,10 @@
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="42dp"
+        android:layout_marginBottom="18dp"
         android:background="@drawable/my_button_bg"
         android:text="Search"
-        app:layout_constraintBottom_toTopOf="@+id/airoport2"
+        app:layout_constraintBottom_toTopOf="@+id/airoport1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText" />
@@ -44,72 +44,118 @@
         android:id="@+id/airoport2"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginEnd="25dp"
-        android:layout_marginBottom="68dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+
+        android:layout_marginBottom="10dp"
         android:clickable="true"
         android:onClick="onClick2"
         android:text="Result 2"
-
         android:textColor="@android:color/black"
         android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/airoport4"
+        app:layout_constraintBottom_toTopOf="@+id/airoport3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/airoport1"
-        app:layout_constraintTop_toBottomOf="@+id/button2" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/airoport1" />
 
     <TextView
         android:id="@+id/airoport1"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="209dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="66dp"
+        android:layout_marginStart="26dp"
+        android:layout_marginEnd="26dp"
+
+        android:layout_marginBottom="13dp"
         android:clickable="true"
         android:onClick="onClick1"
         android:text="Result 1"
-
         android:textColor="@android:color/black"
         android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/airoport3"
-        app:layout_constraintEnd_toStartOf="@+id/airoport2"
+        app:layout_constraintBottom_toTopOf="@+id/airoport2"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/button2" />
 
     <TextView
         android:id="@+id/airoport3"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="26dp"
-        android:layout_marginBottom="54dp"
+        android:layout_marginStart="21dp"
+        android:layout_marginEnd="21dp"
+
+        android:layout_marginBottom="14dp"
         android:clickable="true"
         android:onClick="onClick3"
         android:text="Result 3"
-
         android:textColor="@android:color/black"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/airoport4"
+        app:layout_constraintBottom_toTopOf="@+id/airoport4"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/airoport1" />
+        app:layout_constraintTop_toBottomOf="@+id/airoport2" />
 
     <TextView
         android:id="@+id/airoport4"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="59dp"
+        android:layout_marginStart="21dp"
+        android:layout_marginEnd="21dp"
+
+        android:layout_marginBottom="16dp"
         android:clickable="true"
         android:onClick="onClick4"
         android:text="Result 4 "
-
         android:textColor="@android:color/black"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/airoport3"
-        app:layout_constraintTop_toBottomOf="@+id/airoport2" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/airoport3" />
+
+    <Button
+        android:id="@+id/bres1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="13dp"
+
+        android:layout_marginBottom="86dp"
+        android:text="Add to Favorites"
+        app:layout_constraintBottom_toTopOf="@+id/bres2"
+        app:layout_constraintEnd_toEndOf="@+id/airoport1"
+        app:layout_constraintTop_toBottomOf="@+id/editText" />
+
+    <Button
+        android:id="@+id/bres2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="14dp"
+        android:layout_marginBottom="98dp"
+        android:text="Add to Favorites"
+        app:layout_constraintBottom_toTopOf="@+id/bres3"
+        app:layout_constraintEnd_toEndOf="@+id/airoport2"
+        app:layout_constraintTop_toBottomOf="@+id/bres1" />
+
+    <Button
+        android:id="@+id/bres3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="18dp"
+        android:layout_marginBottom="80dp"
+        android:text="Add to Favorites"
+        app:layout_constraintBottom_toTopOf="@+id/bres4"
+        app:layout_constraintEnd_toEndOf="@+id/airoport3"
+        app:layout_constraintTop_toBottomOf="@+id/bres2" />
+
+    <Button
+        android:id="@+id/bres4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="18dp"
+        android:layout_marginBottom="68dp"
+        android:text="Add to Favorites"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/airoport4"
+        app:layout_constraintTop_toBottomOf="@+id/bres3" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

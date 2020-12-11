@@ -3,6 +3,7 @@ package com.example.snowtam;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.util.Log;
+import android.view.View;
 
 import androidx.annotation.RequiresApi;
 
@@ -57,7 +58,7 @@ public class FetchDataAeroport extends AsyncTask<Void,Void,Void> {
                 "]";*/
         String data="";
        try {
-            URL url = new URL("https://applications.icao.int/dataservices/api/indicators-list?api_key=b40daea0-3ad6-11eb-8f64-ab7a94a1fa08" +
+            URL url = new URL("https://applications.icao.int/dataservices/api/indicators-list?api_key=f9083fe0-3b97-11eb-bd1b-5bb1d23c180e" +
                     "&state=&airports="+search+"&format=json");
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
             InputStream inputStream = httpURLConnection.getInputStream();
@@ -189,7 +190,7 @@ public class FetchDataAeroport extends AsyncTask<Void,Void,Void> {
         super.onPostExecute(aVoid);
         if(result1 != null) {
             SearchFragment.textView1.setText(result1+"\n"+"Click me for more Details ");
-
+            SearchFragment.bres1.setVisibility(View.VISIBLE);
 
         }
         else
@@ -198,18 +199,21 @@ public class FetchDataAeroport extends AsyncTask<Void,Void,Void> {
 //            Log.d("Success", result1);
 //            Log.d("Success", result1);
             SearchFragment.textView2.setText(result2 +"\n"+"Click me for more Details ");
+            SearchFragment.bres2.setVisibility(View.VISIBLE);
         }
         else
             SearchFragment.textView2.setText("");
         if(result3 != null) {
 //            Log.d("Success", result1);
             SearchFragment.textView3.setText(result3+"\n"+"Click me for more Details ");
+            SearchFragment.bres3.setVisibility(View.VISIBLE);
         }
         else
             SearchFragment.textView3.setText("");
         if(result4 != null) {
 //            Log.d("Success", result1);
             SearchFragment.textView4.setText(result4+"\n"+"Click me for more Details ");
+            SearchFragment.bres4.setVisibility(View.VISIBLE);
         }
         else
             SearchFragment.textView4.setText(" ");

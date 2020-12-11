@@ -22,7 +22,10 @@ public class SearchFragment extends Fragment {
     public static TextView textView2;
     public static TextView textView3;
     public static TextView textView4;
-
+    public static Button bres1;
+    public static Button bres2;
+    public static Button bres3;
+    public static Button bres4;
 
     public TextView searchBar ;
     @Nullable
@@ -35,8 +38,15 @@ public class SearchFragment extends Fragment {
         textView3= view.findViewById(R.id.airoport3);
         textView4= view.findViewById(R.id.airoport4);
         searchBar = view.findViewById(R.id.editText);
+        bres1=view.findViewById(R.id.bres1);
+        bres2=view.findViewById(R.id.bres2);
+        bres3=view.findViewById(R.id.bres3);
+        bres4=view.findViewById(R.id.bres4);
         Button button = (Button) view.findViewById(R.id.button2);
-
+        SearchFragment.bres1.setVisibility(View.INVISIBLE);
+        SearchFragment.bres2.setVisibility(View.INVISIBLE);
+        SearchFragment.bres3.setVisibility(View.INVISIBLE);
+        SearchFragment.bres4.setVisibility(View.INVISIBLE);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -114,7 +124,21 @@ public class SearchFragment extends Fragment {
             }
         });
 
+        textView4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SnowTam fragment = new SnowTam();
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                if( !textView4.getText().toString().equals("Result4")) {
+                    fragment.setSearchFor(searchBar.getText().toString().split(";")[3]);
+                    fragment.setLatitude(FetchDataAeroport.latitude4);
+                    fragment.setLongitude(FetchDataAeroport.longitude4);
+                    transaction.replace(R.id.fragment_container, fragment);
+                    transaction.addToBackStack(null).commit();
+                }
 
+            }
+        });
 
         return view;
     }
